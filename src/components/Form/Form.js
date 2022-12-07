@@ -1,26 +1,37 @@
 import React from 'react';
-import { nanoid } from 'nanoid'
-class ContactForm extends React.Component {
 
-    handleSubmit = evt => {
+class ContactForm extends React.Component {
+    state = {
+        name: '',
+        number: '',
+    };
+
+    handlerChange = evt => {
+        console.log(evt.currentTarget);
+        const input = evt.currentTarget;
+        this.setState(prevState => ({
+            [input.name]: input.value
+        })
+        )
+    }
+
+
+    handlerSubmit = evt => {
         evt.preventDefault();
         const form = evt.currentTarget;
-        const name = form.elements.name.value.toLowerCase();
-        const number = form.elements.number.value;
-        // console.log('form:',form);
-        console.log('name:',name);
-        console.log('number:',number);
-        this.props.onSubmit({ name:name, number:number,id: nanoid()});
+        form.reset();
+        this.props.onSubmit(this.state);
+       
 
-    form.reset();
-  };
-
-
+    };    
+      
+    
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handlerSubmit}>
                 <label>Name
-                <input
+                    <input
+                    onChange={this.handlerChange}
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -29,7 +40,8 @@ class ContactForm extends React.Component {
                     />
                 </label>
                  <label>Number
-                <input
+                    <input
+                    onChange={this.handlerChange}
                     type="tel"
                     name="number"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

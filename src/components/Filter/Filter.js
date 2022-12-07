@@ -3,7 +3,6 @@ import React from 'react';
 class Filter extends React.Component {
     
     handleInput = evt => {
-        evt.preventDefault();
         let filterValue = evt.currentTarget.value;
         this.props.onChange(filterValue)
         console.log(filterValue);
@@ -15,6 +14,7 @@ class Filter extends React.Component {
             <div>
                 <label>Find contacts by Name
                     <input
+                        value={this.props.value}
                         name="filter"
                         onChange={this.handleInput}
                         type="text"
