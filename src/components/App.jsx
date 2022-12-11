@@ -2,6 +2,7 @@ import React from 'react'
 import ContactForm from './Form/Form'
 import { nanoid } from 'nanoid'
 import { Contacts } from './Contacts/Contacts';
+import { Section } from './Section/Section';
 import  Filter  from './Filter/Filter';
 export class App extends React.Component {
 
@@ -10,12 +11,12 @@ export class App extends React.Component {
         {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
         {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
         {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+        {id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
         ],
     filter: '',
   };
   
-  saveContact = (contact, ) => {
+  saveContact = (contact ) => {
     const contacts = this.state.contacts;
     const checkName = contacts
       .map(item => item.name.toLowerCase())
@@ -37,11 +38,8 @@ export class App extends React.Component {
     }
     
     
-    
 
   }
-
-
 
   saveFilter = (filterValue) => {
     this.setState(prevState => ({
@@ -57,9 +55,6 @@ export class App extends React.Component {
 
   }
 
-   
- 
-
   render() {
     const filterValue = this.state.filter.toLowerCase();
     const contacts = this.state.contacts;
@@ -67,24 +62,23 @@ export class App extends React.Component {
 
 
     return (
-      <>
+      <div>
+        <Section title='Phonebook' />
         <ContactForm
-          
         onSubmit={this.saveContact}
         />
-
+        <Section title='Contacts' />
         <Filter 
         value = {this.state.filter}
         onChange={this.saveFilter}/>
         <Contacts
           handlerDelete={this.deleteContact}
           contacts={filtredContacts} /> 
-        
-        </>
+        </div>
     )
   }
  
 }
 
 
-// Додати назви
+

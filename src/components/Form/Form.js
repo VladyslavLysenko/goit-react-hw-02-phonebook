@@ -7,7 +7,7 @@ class ContactForm extends React.Component {
     };
 
     handlerChange = evt => {
-        console.log(evt.currentTarget);
+        // console.log(evt.currentTarget);
         const input = evt.currentTarget;
         this.setState(prevState => ({
             [input.name]: input.value
@@ -62,3 +62,5 @@ export default ContactForm;
 //   <LoginForm onSubmit={values => console.log(values)} />,
 //   document.getElementById("root")
 // );
+
+

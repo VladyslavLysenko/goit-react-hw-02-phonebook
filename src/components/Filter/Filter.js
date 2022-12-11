@@ -1,11 +1,10 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 class Filter extends React.Component {
     
     handleInput = evt => {
         let filterValue = evt.currentTarget.value;
         this.props.onChange(filterValue)
-        console.log(filterValue);
     }
 
 
@@ -27,3 +26,7 @@ class Filter extends React.Component {
   
 export default Filter;
   
+Filter.propTypes={
+  value:PropTypes.string.isRequired,
+  onChange:PropTypes.func.isRequired,
+}
