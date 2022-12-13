@@ -63,18 +63,21 @@ export class App extends React.Component {
 
     return (
       <div>
-        <Section title='Phonebook' />
+        <Section title='Phonebook'>
         <ContactForm
         onSubmit={this.saveContact}
-        />
-        <Section title='Contacts' />
+          />
+        </Section>
+        <Section title='Contacts'>
         <Filter 
         value = {this.state.filter}
         onChange={this.saveFilter}/>
         <Contacts
           handlerDelete={this.deleteContact}
           contacts={filtredContacts} /> 
-        </div>
+         </Section>
+      </div>
+      
     )
   }
  
