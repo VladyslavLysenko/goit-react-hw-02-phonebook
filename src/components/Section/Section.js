@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Section = ({title,children}) => {
- return (<Section> 
+ return (<section> 
     {title && <h2>{title}</h2>}
     {children}
- </Section>
+ </section>
    
   );
 }
