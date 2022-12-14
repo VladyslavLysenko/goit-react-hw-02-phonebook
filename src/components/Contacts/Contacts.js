@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ContactItem} from './ContactItem';
+import { ContactItem } from './ContactItem';
+import { InnerWrap } from '../Form/Form.styled';
+import {ContactList,Item,ContactBtn} from './Contacts.styled'
 export const Contacts = ({ contacts, handlerDelete }) => (
-  
-    <ul>
+  <InnerWrap>
+    <ContactList>
       {contacts.map((item) => (
-         <li key={item.id}>
+         <Item key={item.id}>
          <ContactItem
            contact = {item}
          />
          
-         <button type='button' onClick={() => handlerDelete(item.id)}>Delete</button>
-         </li>
+         <ContactBtn type='button' onClick={() => handlerDelete(item.id)}>Delete</ContactBtn>
+         </Item>
        )
        )}
-    </ul>
+    </ContactList>
+  </InnerWrap>
   
 );
 

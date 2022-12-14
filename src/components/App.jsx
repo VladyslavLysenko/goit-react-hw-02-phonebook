@@ -3,7 +3,10 @@ import ContactForm from './Form/Form'
 import { nanoid } from 'nanoid'
 import { Contacts } from './Contacts/Contacts';
 import { Section } from './Section/Section';
-import  Filter  from './Filter/Filter';
+import Filter from './Filter/Filter';
+
+import { GlobalStyle } from "../GlobalStyle";
+import { CommonBox } from './Form/Form.styled';
 export class App extends React.Component {
 
     state = {
@@ -63,19 +66,24 @@ export class App extends React.Component {
 
     return (
       <div>
+        <CommonBox>
         <Section title='Phonebook'>
         <ContactForm
         onSubmit={this.saveContact}
           />
-        </Section>
+          </Section>
+        </CommonBox>
+        <CommonBox>
         <Section title='Contacts'>
         <Filter 
         value = {this.state.filter}
-        onChange={this.saveFilter}/>
+              onChange={this.saveFilter} />
+            
         <Contacts
           handlerDelete={this.deleteContact}
           contacts={filtredContacts} /> 
-         </Section>
+        </Section></CommonBox>
+        <GlobalStyle />
       </div>
       
     )

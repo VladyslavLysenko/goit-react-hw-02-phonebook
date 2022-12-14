@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Input,InnerWrap,SectionForm } from 'components/Form/Form.styled';
 class Filter extends React.Component {
     
     handleInput = evt => {
@@ -10,16 +11,18 @@ class Filter extends React.Component {
 
     render() {
         return (
-            <div>
+            <InnerWrap>
+                <SectionForm>
                 <label>Find contacts by Name
-                    <input
+                    <Input
                         value={this.props.value}
                         name="filter"
                         onChange={this.handleInput}
                         type="text"
                         placeholder="Search contact..." />
                     </label>
-            </div>
+                </SectionForm>
+            </InnerWrap>
         )
     }
 }
